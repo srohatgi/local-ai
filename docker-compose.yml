@@ -1,0 +1,22 @@
+version: '3'
+services:
+  my-ollama:
+    image: ollama/ollama
+    container_name: my-ollama
+    environment:
+      - OLLAMA_MODELS=/data
+    volumes:
+      - "./data:/data"
+  webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - HF_ENDPOINT=https://hf-mirror.com
+      - WEBUI_AUTH=False
+    volumes:
+      - "./data/open-webui:/app/backend/data"
+    depends_on:
+      - my-ollama
