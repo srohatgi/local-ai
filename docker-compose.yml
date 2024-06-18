@@ -13,7 +13,7 @@ services:
     ports:
       - "3000:8080"
     environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_BASE_URL=http://my-ollama:11434
       - HF_ENDPOINT=https://hf-mirror.com
       - WEBUI_AUTH=False
     volumes:
