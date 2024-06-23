@@ -1,3 +1,4 @@
+.PHONY: start debug run stop clean
 
 start:
 	@mkdir -p data
@@ -18,3 +19,7 @@ run: start
 
 stop:
 	@docker compose down
+
+clean: stop
+	@rm -rf data
+
