@@ -1,6 +1,6 @@
 # MY-AI: YOUR PRIVATE LLM
 
-This repo allows one to spin up a private LLM with a UI for personal use.
+This repo allows one to spin private LLMs with a UI for personal use.
 
 ## Running
 

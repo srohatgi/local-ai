@@ -8,14 +8,13 @@ start:
 debug:
 	@docker exec -it ollama /bin/bash
 
-llm:=llama3
+llms:=llama3.2:3b deepseek-coder-v2:16b
 run: start
-	@$(eval COUNT=$(shell docker exec my-ollama ollama list | grep $(llm) | wc -l))
-	@if [ $(COUNT) -gt 0 ]; then \
-		echo "$(llm) is already present"; \
-	else \
-		docker exec my-ollama ollama pull $(llm); \
-	fi
+	# Download LLMs
+	for llm in $(llms); do \
+		echo "Downloading $${llm}"; \
+		docker exec my-ollama ollama pull $${llm}; \
+	done
 
 stop:
 	@docker compose down
